@@ -1,0 +1,69 @@
+<?php session_start(); ?>
+<html>
+<head>
+    <title> Головна </title>
+     <meta name="keywords" content="готель, проживання, відпочинок, розкішний готель, комфорт">
+    <meta name="description" content="Ласкаво просимо до нашого готелю! Ми пропонуємо розкішне та комфортне проживання для вашого відпочинку. Забронюйте номер прямо зараз та насолоджуйтесь найкращим сервісом.">
+    <link rel="stylesheet"  type="text/css" href="css/11.css"/>
+</head>
+
+<body>
+    <div>
+    <div class="menu">
+     <object data="head2.html" style="width:100%; height: 54px; margin: 0;"> </object>
+
+    </div>
+
+      <div class="content">
+    <table class="main">
+
+        <tr>
+            <td colspan="3" >
+                <p>Наші номери</p>
+                            <table>
+                                  <tr>
+
+                                    <td class="size"><img src="images/room1.jpg" alt="фото кімнати1"></td>
+                                    <td class="size"><img src="images/room2.jpg" alt="фото кімнати2"></td>
+                                    <td class="size"><img src="images/room4.jpg" alt="фото кімнати3"></td>
+                                </tr>
+                                 <tr>
+                                    <td class="text">Cтандартний</td>
+                                    <td class="text">Напів люкс</td>
+                                    <td class="text">Люкс</td>
+                                </tr>
+                            </table>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="3">
+                 <table  class="sity">
+                    <tr>
+                        <td>
+                            <p> Наше розташування</p>
+                            <ul >
+                            <li><a  href="Kyiv.html" target="City" > <font size="4"face="Georgia">Київ</font></a></li>
+                            <li><a  href="Dnipro.html" target="City">  <font size="4"face="Georgia">Дніпро</font></a></li>
+                            <li><a  href="Harkiv.html" target="City" > <font size="4"face="Georgia">Харків</font></a></li>
+                            </ul>
+                        </td>
+                        <td>
+                            <iframe height="300px" width="99.1%"  src="map.html" name="City"></iframe>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+           <?php include("footer.html");?>
+            </td>
+        </tr>
+    </table>
+    </div>
+    </div>
+
+</body>
+</html>
+

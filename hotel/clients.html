@@ -1,0 +1,81 @@
+﻿<html>
+<head>
+<link rel="stylesheet"  type="text/css" href="css/clients.css" />
+   <script src="script.js" language="javascript"></script>
+</head>
+
+  <script type="text/javascript">
+
+
+</script>
+<?php $conn = new mysqli('localhost', 'root', '', 'hotel');
+// Перевірка з'єднання
+if ($conn->connect_error) {
+    die("Помилка з'єднання: " . $conn->connect_error);
+}
+?>
+
+<div class="main">
+    <div class="meny">
+        <object data="head2.html" ></object>
+    </div>
+        <div class="info">
+        <?php
+
+
+
+        $sql = "SELECT  clients.*, rooms.name AS room_name
+        FROM clients
+        JOIN rooms ON clients.id_room = rooms.id
+        ORDER BY room_name";
+
+$result = $conn->query($sql);
+
+// 3. Выводим результаты в виде HTML-таблицы
+// Выводим результаты в виде HTML-таблицы
+echo "<table border='1'>
+        <tr>
+        <th>Кімната</th>
+        <th>Ім'я клієнта</th>
+        <th>Номер телефону</th>
+        <th>Дата заїзду</th>
+        <th>Дата виїзду</th>
+        <th>Редагувати</th>
+        <th> Видалити</th>
+        <th> Підтверджено</th>
+
+        </tr>";
+
+if ($result->num_rows > 0) {
+
+    while ($row = $result->fetch_assoc()) {
+        echo "<tr>
+
+            <td>".$row['room_name']."</td>
+            <td>".$row['cl_name']."</td>
+            <td>".$row['cl_phone']."</td>
+            <td>".$row['date1']."</td>
+            <td>".$row['date2']."</td>
+            <td><a href='edit_client.php?id=" . $row['id'] . "'> Редагувати </а></td>
+            <td><a  href='delete_client.php?id=" . $row['id'] . "'onclick='return delete_it()'> Видалити </а></td>
+
+
+
+            <td><input type='checkbox' name='confirm' value='1'".($row['confirm'] == 1 ? 'checked' : '')." onclick='return false;' /></td>
+
+
+            </tr>";
+    }
+}
+echo "</table>";
+
+
+$conn->close();
+?>
+        </div>
+
+</div>
+
+
+</html>
+

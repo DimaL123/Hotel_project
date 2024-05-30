@@ -1,0 +1,75 @@
+﻿<html>
+<head>
+     <title> Кімнати </title>             
+     <meta name="keywords" content="номери готелю, готельні номери, вільні номери, бронювання номерів">
+    <meta name="description" content="Ознайомтесь з усіма доступними номерами нашого готелю. Від просторих люксів до затишних стандартних номерів, ми маємо ідеальне рішення для вашого комфортного перебування. Забронюйте свій номер прямо зараз!">
+ <link rel="stylesheet"  type="text/css" href="css/info.css" />
+ <link href="https://fonts.cdnfonts.com/css/philosopher-3" rel="stylesheet">
+</head>
+<div class="main">
+<a name="top"></a>
+    <div class="meny">
+        <object data="head2.html" ></object>
+    </div>
+
+<?php
+$conn = new mysqli('localhost', 'root', '', 'hotel');
+// Перевірка з'єднання
+if ($conn->connect_error) {
+    die("Помилка з'єднання: " . $conn->connect_error);
+}
+?>
+
+ <div class="info">
+<?php
+$rows = $conn->query("SELECT * FROM rooms");
+while ($stroka =$rows->fetch_assoc())
+    {
+        echo"<div class='q'>";
+        $show_img = base64_encode($stroka['photo']);
+
+        echo" <div class='photo'>";
+        echo"<img src='data:image/jpeg;base64, ".$show_img."' alt='Зображення немає'> ";
+        echo"</div>";
+
+        echo"<div>";
+            echo "<p class='name'>".$stroka['name']."</p>";
+
+            if($stroka['sale']==1)
+            {
+                  $new_prise=$stroka['prise']-($stroka['prise']*($stroka['persent'] /100));
+
+                 echo "<p ><span  class='col'>Ціна: </span><span style='text-decoration: line-through'>".$stroka['prise']." грн / ніч</span>
+                 <span style='color: red; font-size: 24px; margin: 0 0 0 15;'>". $new_prise." грн / ніч</span></p>";
+                  echo "<div class='sale' >-".$stroka['persent']."%</div>";
+
+            }else
+            {
+                echo "<p ><span  class='col'>Ціна: </span>".$stroka['prise']." грн / ніч</p>";
+            }
+
+
+
+
+
+            echo "<a href='register2.html?id=" . $stroka['id'] . "'><button>ЗАБРОНЮВАТИ </button></a>";
+
+            echo "<p>Кіл-ть вільних кімнат: ".$stroka['kol']."</p>";
+            echo"<p>Опис: ".$stroka['info']."</p>";
+        echo"</div>";
+        echo"</div>";
+    }
+    ?>
+    <div class="img"><a href="#top"><img src="images/up.png" height="50px" width="50px"  alt="вгору"></a> </div>
+     <table>
+          <tr>
+              <td><?php include("footer.html");?>           </td>
+          </tr>
+      </table>
+</div>
+
+</div>
+
+
+</html>
+

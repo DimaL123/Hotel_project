@@ -1,0 +1,143 @@
+ body
+{
+    background: linear-gradient(319deg, #000933, #0085D0);
+    margin:0;
+    display: flex;
+    justify-content: center;
+    background-attachment: fixed;
+}
+.main{
+    min-width: 880px;
+    width: 100%;
+    position: relative;
+    display: inline-table;
+/*    background: red;    */
+}
+.meny{
+    position: sticky;
+    top:0;
+    height: 50px;
+    border-bottom:1px solid;
+    z-index: 1;
+}
+object{
+    width: 99.9%;
+    height:50px;
+}
+.img{
+    position:fixed;
+    right:90px;
+    bottom: 15px;
+}
+.info{
+
+    width: 90%;
+    background:#D1D1D1;
+    margin: 3 auto;
+    text-align:center;
+}
+
+.room_type{
+
+    font-family: Philosopher, sans-serif;
+    font-weight: 700;
+    font-size: 30pt;
+    color: #b45360;
+}
+.room_info{
+
+    font-family: Philosopher, sans-serif;
+    font-weight: 700;
+    font-size: 30pt;
+    color: #1a171b;
+}
+.room_prise{
+    font-family: Philosopher, sans-serif;
+    font-weight: 700;
+    font-size: 30pt;
+    color: #b45360;
+}
+.room{
+    width: 30%;
+    margin: 5px;
+    border: 2px solid;
+}
+.for_form{
+    background: #807777;
+    height: 500px;
+    margin: 50 0 0 0;
+    color: white;
+
+}
+input{
+    width: 135px;
+    height: 33px;
+    border-radius: 12px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#zatemnenie {
+    background: rgba(102, 102, 102, 0.5);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+}
+#okno {
+    width: 491px;
+    height: 127px;
+    text-align: center;
+    padding: 15px;
+    border: 3px solid #0000cc;
+    border-radius: 10px;
+    color: #000;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    background: #fff;
+    opacity: 0.89;
+}
+#zatemnenie:target {display: block;}
+.close {
+    display: inline-block;
+    border: 1px solid #000000;
+    color: #ffffff;
+    padding: 0 12px;
+    margin: 10px;
+    text-decoration: none;
+    background: #5978e8;
+    font-size: 14pt;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.close:hover {background: #e6e6ff;}
+

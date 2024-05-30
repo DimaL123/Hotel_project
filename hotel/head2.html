@@ -1,0 +1,149 @@
+<?php session_start(); ?>
+<html>
+<head>
+ <link rel="stylesheet"  type="text/css" href="css/head2.css" />
+</head>
+<header>
+    <div class="head">
+        <a class="home_url" target="_parent" href="index.html"><div id="container" style="position:relative; width: 120; height: 50;background-size: cover;">
+        <div id="myDiv" style="position:absolute; width: 80px; height: 25px; background-size: cover;"></div>
+        </div></a>
+
+        <div><a target="_parent" href="index.html">Головна</a></div>
+        <div><a target="_parent"  href="rooms.html">Огляд номерів</a></div>
+        <div class="width"><a target="_parent"  href="about.html">Про готель</a></div>
+        <div><a target="_parent"  href="info_bd.html">Кімнати</a></div>
+        
+        <div><a target="_parent"  href="map2.html">Місцезнаходження</a></div>
+
+        <?php
+            if(!isset($_SESSION['login']))
+            {
+                echo "<div class='enter'><a href='authorization.html'  target='_top'><input name='2' type='button' value='Авторизація'></a></div>";
+            }
+            else{
+
+             echo "<div><a target='_parent' href='add_new_room.html'>Додати кімнати</a></div>";
+             echo "<div><a target='_parent' href='edit_rooms.html'>Редагувати кімнати</a></div>";
+             echo "<div><a target='_parent' href='clients.html'>Клієнти</a></div>";
+             echo $_SESSION['login'];
+             echo "<div class='enter'><a href='logout.php' target='_top'><input name='2' type='button' value='Вихід'></a></div>";
+            }
+
+$conn = new mysqli('localhost', 'root', '', 'hotel');
+
+if ($conn->connect_error) {
+    die("Помилка з'єднання: " . $conn->connect_error);
+}
+
+// Вибираємо всі записи з таблиці rooms
+$query = "SELECT * FROM rooms";
+$result = $conn->query($query);
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $id = $row['id'];
+        $start_date = $row['start'];
+        $end_date = $row['end'];
+
+        $currentDate = date('Y-m-d');
+
+        if ($currentDate >= $start_date && $currentDate <= $end_date) {
+            // Подія почалася
+            $conn->query("UPDATE rooms SET sale='1' WHERE id=$id");
+        } elseif ($currentDate > $end_date) {
+            // Подія закінчилась
+            $conn->query("UPDATE rooms SET sale='0' WHERE id=$id");
+        }
+    }
+} else {
+    echo "Немає записів у таблиці rooms.";
+}
+
+$conn->close();
+
+
+?>
+
+    </div>
+
+ </header>
+ <body>
+
+    <script>
+
+        function calculateNewPosition(currentLeft, currentTop, offsetX, offsetY) {
+            var newLeft = currentLeft + offsetX * directionX;
+            var newTop = currentTop + offsetY * directionY;
+            return {
+                left: newLeft,
+                top: newTop
+            };
+        }
+
+        function moveDiv() {
+            var container = document.getElementById("container");
+            var div = document.getElementById("myDiv");
+            var currentLeft = parseInt(div.style.left) || 0;
+            var currentTop = parseInt(div.style.top) || 0;
+            var containerWidth = container.offsetWidth;
+            var containerHeight = container.offsetHeight;
+            var divWidth = div.offsetWidth;
+            var divHeight = div.offsetHeight;
+
+            var newPosition = calculateNewPosition(currentLeft, currentTop, 5,5);
+
+            // Перевіряємо, чи дів не виходить за межі контейнера перед переміщенням
+            if (newPosition.left >= 0 && newPosition.left + divWidth <= containerWidth && newPosition.top >= 0 && newPosition.top + divHeight <= containerHeight) {
+                div.style.left = newPosition.left + "px";
+                div.style.top = newPosition.top + "px";
+            } else {
+                // Якщо дів зіштовхується з межами, змінюємо напрямок руху
+                if (newPosition.left < 0 || newPosition.left + divWidth > containerWidth) {
+                    directionX *= -1; // змінюємо напрямок руху по осі X
+                }
+                if (newPosition.top < 0 || newPosition.top + divHeight > containerHeight) {
+                    directionY *= -1; // змінюємо напрямок руху по осі Y
+                }
+                // Переміщуємо дів знову відповідно до нового напрямку руху
+                var newPositionAfterBounce = calculateNewPosition(currentLeft, currentTop, 5, 5);
+                div.style.left = newPositionAfterBounce.left + "px";
+                div.style.top = newPositionAfterBounce.top + "px";
+            }
+              // Рекурсивний виклик, якщо рух активний
+            if (directionX !== 0 || directionY !== 0) {
+                setTimeout(moveDiv, 70);
+            }
+        }
+        var div = document.getElementById("container");
+        div.style.backgroundImage = 'url("Group 1.png")';
+        var div2 = document.getElementById("myDiv");
+        div2.style.backgroundImage = 'url(" ")';
+
+        var isMoving = false; // стан руху
+
+div.addEventListener("mouseover", function() {
+    if (!isMoving) {
+        div.style.backgroundImage = 'url("")';
+         div2.style.backgroundImage = 'url("Group 1.png")';
+        directionX = 0.5; // праворуч
+        directionY = 0.5; // вниз
+        isMoving = true; // встановлюємо флаг у значення true
+        moveDiv();
+    }
+});
+
+
+div.addEventListener("mouseleave", function() {
+    div.style.backgroundImage = 'url("Group 1.png")';
+     div2.style.backgroundImage = 'url(" ")';
+    directionX = 0; // зупиняємо рух по осі X
+    directionY = 0; // зупиняємо рух по осі Y
+    isMoving = false; // повертаємо флаг у значення false
+});
+
+    </script>
+ </body>
+
+</html>
+

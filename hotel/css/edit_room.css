@@ -1,0 +1,78 @@
+body
+{
+    background: linear-gradient(319deg, #000933, #0085D0);
+    margin:0;
+    display: flex;
+    justify-content: center;
+/*    background-attachment: fixed;  */
+}
+
+.meny{
+    position: sticky;
+    top:0;
+    height: 50px;
+    border-bottom:1px solid;
+    z-index: 1;
+
+
+}
+.main{
+
+    min-width: 880px;
+    width: 100%;
+    position: relative;
+    display: inline-table;
+/*    background: red;    */
+}
+object{
+    width: 99.9%;
+    height:50px;
+}
+.info{
+    display: flex;
+    width: 90%;
+    background: #D1D1D1;
+    margin:auto;
+    flex-direction: column;
+        align-items: center;
+        margin-top: 5px;
+}
+.info2{
+    display: flex;
+    width: 90%;
+    background: #D1D1D1;
+    margin:auto;
+    flex-direction: column;
+
+}
+table{
+    background: white;
+}
+ form{
+     margin: 18px;
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+label {
+    position: absolute;
+    left: 315px;
+}
+input {
+    position: relative;
+
+}
+textarea {
+    position: relative;
+
+}

@@ -1,0 +1,61 @@
+body
+{
+    background: linear-gradient(319deg, #000933, #0085D0);
+    margin:0;
+    display: flex;
+    justify-content: center;
+/*    background-attachment: fixed;  */
+}
+.main{
+
+    min-width: 880px;
+    width: 100%;
+    position: relative;
+    display: inline-table;
+/*    background: red;    */
+}
+object{
+    width: 99.9%;
+    height:50px;
+}
+.info{
+    display: flex;
+    width: 90%;
+    background: #D1D1D1;
+    margin: 3 auto;
+    flex-direction: column;
+        align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}

@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title> Заголовок вікна </title>
+        <link rel="stylesheet"  type="text/css" href="css/auth.css"/>
+    </head>
+
+    <body style="background: linear-gradient(319deg, #000933, #0085D0)"  text="black">
+
+    <div >
+        <div class="menu">
+            <object data="head2.html" style="width:100%; height: 54px; margin: 0;"> </object>
+        </div>
+
+
+  <div class="login-page">
+    <div class="form">
+        <fieldset>
+<legend align="center"><font size="6" face="cursive" >Авторизація</font></legend><br>
+    <form  class="login-form" method='post' action="<?php echo $_SERVER['PHP_SELF']; ?>">
+            <input type="text" name="login" placeholder="username"/>
+            <input type="password" name="pass" placeholder="password"/>
+            <input class="buttun" name="ok" type="submit" value="login">
+           
+

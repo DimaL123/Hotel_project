@@ -1,0 +1,156 @@
+
+.sale {
+
+    position: relative;
+    top: -80px;
+    left: 187px;
+    background: red;
+    border-radius: 36px;
+    width: 38px;
+    padding: 5px 5px;
+    text-align: center;
+}
+body
+{
+    background: linear-gradient(319deg, #000933, #0085D0);
+    margin:0;
+    display: flex;
+    justify-content: center;
+/*    background-attachment: fixed;  */
+}
+.main{
+
+    min-width: 880px;
+    width: 100%;
+    position: relative;
+    display: inline-table;
+/*    background: red;    */
+
+
+
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0px;
+}
+object{
+    width: 99.9%;
+    height:50px;
+}
+
+.meny{
+    position: sticky;
+    top:0;
+    height: 50px;
+    border-bottom:1px solid;
+    z-index: 1;
+
+
+}
+
+.t{
+    margin:10px;
+    font-family: Philosopher,sans-serif;
+    font-weight: 700;
+    font-size: 30pt;
+    text-align:center;
+    color:#d1ad64;
+
+}
+.img{
+    position:fixed;
+    right:90px;
+    bottom: 15px;
+}
+.photo img{
+    width: 500px;
+    height:350px;
+    margin: 0 50 10 10;
+    clip-path: circle(50%);
+
+
+
+}
+.info{
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    background:#D1D1D1;
+    margin: 3 auto;
+}
+
+p{
+    margin: 15 15 15 0;
+    font-size: 21;
+        color: #1F1F1F;
+}
+
+.col{
+    color: #6C6C6C;
+}
+button{
+
+    padding: 15 50;
+    border-radius: 5px;
+    background:#36CC31;
+    font-family: Philosopher,sans-serif;
+}
+button:hover{
+    background:#8BE288;
+    font-family: Philosopher,sans-serif;
+    color:blask;
+}
+
+.name{
+    color: #8f1736;
+    font-family: Philosopher,sans-serif;
+    font-weight: 700;
+    font-size: 14pt;
+
+}
+::-webkit-scrollbar {
+    width: 15px;
+    height: 10px;
+}
+
+
+::-webkit-scrollbar-thumb {
+    background-color: #6c6c6c;
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #36CC31;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #111;
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+}
+.q{
+    width: 100%;
+    margin-top:5px;
+    display: flex;
+
+}
+
+.info2{
+    border: 1px solid #000000 ;
+    border-width:1 0 1 0;
+    width: 100%;
+    background: #A9A9A9;
+        text-align: center;
+}
+table{
+    border-collapse: collapse;
+    min-width: 100%;
+    background: #f8f8f8;
+    text-align: center;
+
+}

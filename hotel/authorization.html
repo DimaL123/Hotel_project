@@ -1,0 +1,44 @@
+<?php session_start();
+if(!isset($_POST['ok'])) {
+// если форма не заполнена, то выводим ее
+include ("auth_form.html");
+}
+else{
+$conn = new mysqli('localhost', 'root', '', 'hotel');
+// Перевірка з'єднання
+if ($conn->connect_error) {
+    die("Помилка з'єднання: " . $conn->connect_error);
+}
+
+//проверяем есть ли пользователь с таким Loginom и passwordom
+$res=$conn->query("SELECT * FROM users WHERE login='".$_POST['login']."' AND pass='".$_POST['pass']."'");
+
+if ($res->num_rows != 1){ //такого пользователя нет
+include ("auth_form.html"); 
+echo "<font class='error' color=red> І'мя або пароль введено невірно</font>";
+}
+else {
+//пользователь найден
+$_SESSION['login']=$_POST['login']; //устанавливаем login & pass
+$_SESSION['pass']=$_POST['pass'];
+Header("Location: index.html");
+}
+$conn->close();
+}
+?>
+
+</form>
+</fieldset>
+</div>
+</div>
+</div>
+</body>
+</html>
+ <style>
+ .error{
+        font-family: "Roboto", sans-serif;
+        position: relative;
+        top: 15px;
+        left: 0px;
+    }
+   </style>
